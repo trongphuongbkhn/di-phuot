@@ -4,9 +4,7 @@ var Schema = mongoose.Schema;
 
 var idfacebookSchema = new Schema({
   // id: Number
-  id : Number,
-  name : String,
-  link : String
+  id : Number
 });
 
 var idfacebookModel = mongoose.model("idfacebook", idfacebookSchema);
