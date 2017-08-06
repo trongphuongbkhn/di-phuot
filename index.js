@@ -8,9 +8,11 @@ mongoose.connect('mongodb://admin:admin@ds127783.mlab.com:27783/android9-diphuot
 ,{ useMongoClient: true});
 
 // var idfacebook = new Idfacebook({
-//   id: 777777
+//   id: 5,
+//   name: "Hội An",
+//   link: "https://upload.wikimedia.org/wikipedia/commons/f/f3/PhoCoHoiAn.jpg"
 // });
-//
+
 // idfacebook.save();
 
 app.set('port', (process.env.PORT || 5000));
@@ -45,10 +47,16 @@ app.get('/api/diphuot', function(req,res){
 app.post('/api/diphuot', function(req,res){
   var body = req.body;
   var id = body.id;
-  
+  var name = body.name;
+  var link = body.link;
+
   var idfacebook = new Idfacebook({
-    id: id
+    id: id,
+    name: name,
+    link: link
   });
+
+  console.log(idfacebook);
 
  idfacebook.save(function(err, addedIdfacebook){
    if(err){
