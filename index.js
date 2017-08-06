@@ -1,7 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-var Idfacebook = require('./models/idfacebook');
+var Idfacebook = require('./models/idfacebook');//TODO: IdFacebok
 var app = express();
 
 mongoose.connect('mongodb://admin:admin@ds127783.mlab.com:27783/android9-diphuot'
@@ -27,10 +27,10 @@ app.get('/', function(request, response) {
   response.render('pages/index');
 });
 
-app.post('/api/diphuot', function(req,res){
-  var body = req.body;
-  res.json(body);
-});
+// app.post('/api/diphuot', function(req,res){
+//   var body = req.body;
+//   res.json(body);
+// });
 
 app.get('/api/diphuot', function(req,res){
   Idfacebook.find(function(err, idfacebook){
@@ -45,6 +45,7 @@ app.get('/api/diphuot', function(req,res){
 app.post('/api/diphuot', function(req,res){
   var body = req.body;
   var id = body.id;
+  
   var idfacebook = new Idfacebook({
     id: id
   });
