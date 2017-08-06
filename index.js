@@ -56,13 +56,12 @@ app.post('/api/diphuot', function(req,res){
     link: link
   });
 
-  console.log(idfacebook);
 
- idfacebook.save(function(err, addedIdfacebook){
+ idfacebook.save(function(err, idfacebook){
    if(err){
      res.json({success: 0, message:'Could not add record'+err});
    } else {
-     res.json(addedIdfacebook);
+     res.json({success: 1, message:'done'});
    }
  });
 });
