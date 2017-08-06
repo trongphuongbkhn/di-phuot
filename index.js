@@ -55,9 +55,9 @@ app.post('/api/diphuot', function(req,res){
 
  idfacebook.save(function(err, idfacebook){
    if(err){
-     res.json({success: 0, message:'Could not add record'+err});
+     res.json({ message:'Could not add record'+err});
    } else {
-     res.json({success: 1, message:'done'});
+     res.json({ message:'done'});
    }
  });
 });
