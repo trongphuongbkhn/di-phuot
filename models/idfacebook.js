@@ -6,8 +6,8 @@ var idfacebookSchema = new Schema({
     base64image : String,
     username : String,
     day : Number,
-    month:Number,
-    year:Number,
+    month: Number,
+    year: Number,
     content : String
 });
 
