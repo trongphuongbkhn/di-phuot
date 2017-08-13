@@ -46,20 +46,22 @@ app.get('/api/diphuot', function(req,res){
 
 app.post('/api/diphuot', function(req,res){
   var body = req.body;
-  var base64image = body.base64image;
+  var userid = body.userid;
+  var image = body.image;
   var username = body.username;
-  var day = body.day;
-  var month = body.month;
-  var year = body.year;
+  var timeupload = body.timeupload;
+  var destination = body.destination;
   var content = body.content;
+  var like = body.like;
 
   var idfacebook = new Idfacebook({
-    base64image: base64image,
+    userid:userid,
+    image: image,
     username: username,
-    day: day,
-    month: month,
-    year: year,
-    content: content
+    timeupload: timeupload,
+    destination: destination,
+    content: content,
+    like: like
   });
 
 

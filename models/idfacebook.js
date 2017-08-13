@@ -3,12 +3,13 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var idfacebookSchema = new Schema({
-    base64image : String,
+    userid : String,
+    image : String,
     username : String,
-    day : Number,
-    month: Number,
-    year: Number,
-    content : String
+    timeupload : String,
+    destination: String,
+    content : String,
+    like: Number
 });
 
 var idfacebookModel = mongoose.model("idfacebook", idfacebookSchema);
