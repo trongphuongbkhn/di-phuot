@@ -65,6 +65,7 @@ app.post('/api/diphuot', function(req,res){
   });
 
 
+
  idfacebook.save(function(err, idfacebook){
    if(err){
      res.json({ message:'Could not add record'+err});
@@ -73,6 +74,23 @@ app.post('/api/diphuot', function(req,res){
    }
  });
 });
+
+app.put('/api/diphuot',function(req,res){
+  var body = req.body;
+  var id = body.id;
+  var like = body.like;
+  Idfacebook.findById(id, function(err,idfacebook){
+    if(err) return handleError(err);
+
+    idfacebook.like = like;
+    idfacebook.save(function(err, updatedIdfacebook){
+      if(err) return handleError(err);
+      res.send(updatedIdfacebook);
+    });
+  });
+});
+
+
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
