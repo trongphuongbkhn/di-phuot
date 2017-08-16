@@ -85,7 +85,7 @@ app.put('/api/diphuot',function(req,res){
     idfacebook.like = like;
     idfacebook.save(function(err, updatedIdfacebook){
       if(err) return handleError(err);
-      res.send(updatedIdfacebook);
+      res.json({message:'update like done'});
     });
   });
 });
