@@ -8,12 +8,17 @@ mongoose.connect('mongodb://admin:admin@ds127783.mlab.com:27783/android9-diphuot
 ,{ useMongoClient: true});
 
 // var idfacebook = new Idfacebook({
-//   id: 5,
-//   name: "Hội An",
-//   link: "https://upload.wikimedia.org/wikipedia/commons/f/f3/PhoCoHoiAn.jpg"
+//   userid: "1359582900828322",
+//   image: "https://cdn3.ivivu.com/2014/10/Du-lich-vung-tau-cam-nang-tu-a-den-z-iVIVU.com-12.jpg",
+//   username: "Trọng Phương",
+//   timeupload: "1/1/2017",
+//   destination: "Vũng Tàu",
+//   content: "Vũng Tàu là thành phố thuộc tỉnh Bà Rịa - Vũng Tàu, ở vùng Đông Nam Bộ Việt Nam. Đây là trung tâm kinh tế, tài chính, văn hóa, du lịch, giao thông - vận tải và giáo dục và là một trong những trung tâm kinh tế của vùng Đông Nam Bộ. Sở hữu nhiều bãi biển đẹp và cơ sở hạ tầng được đầu tư hoàn chỉnh, Vũng Tàu là một địa điểm du lịch nổi tiếng tại miền Nam. Ngoài ra, thành phố còn là khu vực hậu cần của ngành công nghiệp dầu khí Việt Nam.",
+//   like: 12,
+//  comment : { name: "phương", sentence: "wow"}
 // });
 
-// idfacebook.save();
+ // idfacebook.save();
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -29,10 +34,6 @@ app.get('/', function(request, response) {
   response.render('pages/index');
 });
 
-// app.post('/api/diphuot', function(req,res){
-//   var body = req.body;
-//   res.json(body);
-// });
 
 app.get('/api/diphuot', function(req,res){
   Idfacebook.find(function(err, idfacebook){
@@ -61,7 +62,7 @@ app.post('/api/diphuot', function(req,res){
     timeupload: timeupload,
     destination: destination,
     content: content,
-    like: like
+    like: like,
   });
 
 
@@ -87,6 +88,16 @@ app.put('/api/diphuot',function(req,res){
       if(err) return handleError(err);
       res.json({message:'update like done'});
     });
+  });
+});
+
+app.put('/api/comment',function(req,res){
+  var body = req.body;
+  var id = body.id;
+  var comment = body.comment;
+  Idfacebook.findByIdAndUpdate(id,{$push:{comment}}, function(err, idfacebook){
+    if(err) return handleError(err);
+    res.json({message:'comment done'});
   });
 });
 

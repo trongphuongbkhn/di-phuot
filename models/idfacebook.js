@@ -9,8 +9,10 @@ var idfacebookSchema = new Schema({
     timeupload : String,
     destination: String,
     content : String,
-    like: Number
+    like: Number,
+    comment: [{name: String, sentence: String}]
 });
+
 
 var idfacebookModel = mongoose.model("idfacebook", idfacebookSchema);
 
